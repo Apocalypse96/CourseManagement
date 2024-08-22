@@ -1,0 +1,21 @@
+version: '3.8'
+services:
+  backend:
+    image: apocalypse96/internship_backend:latest
+    ports:
+      - "6969:6969"  # Maps port 6969 on the host to port 6969 in the container
+    environment:
+      - SPRING_PROFILES_ACTIVE=prod
+      - SPRING_DATASOURCE_URL=jdbc:h2:file:/data/testdb;DB_CLOSE_ON_EXIT=FALSE;AUTO_RECONNECT=TRUE
+      - SPRING_H2_CONSOLE_ENABLED=true
+      - SPRING_H2_CONSOLE_PATH=/h2-console
+      - SPRING_H2_CONSOLE_SETTINGS_WEB_ALLOW_OTHERS=true
+    volumes:
+      - ./data:/data  # Maps the ./data directory on the host to /data in the container
+
+  frontend:
+    image: apocalypse96/internship_frontend:latest
+    ports:
+      - "3000:80"  # Maps port 3000 on the host to port 80 in the container
+    depends_on:
+      - backend

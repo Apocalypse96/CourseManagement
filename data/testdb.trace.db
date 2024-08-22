@@ -1,0 +1,3 @@
+2024-08-22 15:48:00.997102Z jdbc[13]: exception
+org.h2.jdbc.JdbcSQLSyntaxErrorException: Table "INSTANCES" not found; SQL statement:
+SELECT * FROM instances WHERE course_id = <course_id> [42102-224]
